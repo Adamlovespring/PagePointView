@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.adam.library.util.DimenUtil;
-
 /**
  * Created by Adam on 2017/5/8.
  */
@@ -16,10 +14,9 @@ import com.adam.library.util.DimenUtil;
 public class PointView extends View {
 
     private static final int DEFAULT_POINT_COLOR = 0xffffffff;
-    private static final int DEFAULT_POINT_RADIUS = 5;
 
     private int mPointColor = DEFAULT_POINT_COLOR;
-    private int mPointRadius = DEFAULT_POINT_RADIUS;
+    private int mPointRadius ;
 
     public PointView(Context context) {
         super(context);
@@ -45,7 +42,7 @@ public class PointView extends View {
         if (widthMode == MeasureSpec.EXACTLY) {
             width = widthSize;
         } else {
-            width = getPaddingLeft() + DimenUtil.dp2px(getContext(), mPointRadius * 2) + getPaddingRight();
+            width = getPaddingLeft() +  mPointRadius * 2 + getPaddingRight();
         }
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
@@ -53,7 +50,7 @@ public class PointView extends View {
         if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;
         } else {
-            height = getPaddingTop() + DimenUtil.dp2px(getContext(), mPointRadius * 2) + getPaddingBottom();
+            height = getPaddingTop() +  mPointRadius * 2 + getPaddingBottom();
         }
         setMeasuredDimension(width, height);
     }
@@ -65,12 +62,12 @@ public class PointView extends View {
         paint.setColor(mPointColor);
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
-        float radius = DimenUtil.dp2px(getContext(), mPointRadius);
-        canvas.drawCircle(radius, radius, radius, paint);
+        canvas.drawCircle(mPointRadius, mPointRadius, mPointRadius, paint);
     }
 
     public void setPointRadius(int radius) {
         mPointRadius = radius;
+        invalidate();
     }
 
     public void setPointColor(int color) {
