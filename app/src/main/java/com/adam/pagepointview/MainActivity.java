@@ -12,6 +12,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PagePointView pagePointView = (PagePointView) findViewById(R.id.pagePointView);
-        pagePointView.setPointRadius(DimenUtil.dp2px(this,40));
+        pagePointView.setPointColor(0xffff0000);
     }
 }

@@ -14,16 +14,18 @@ import com.adam.library.R;
 
 public class PagePointView extends LinearLayout {
 
-    private static final int DEFAULT_POINT_COUNT = 2;
+    private static final int DEFAULT_POINT_COUNT = 5;
     private static final int DEFAULT_POINT_SPACE = 5;
     private static final int DEFAULT_INDEX = 0;
     private static final float SELECTED_ALPHA = 1f;
     private static final float UNSELECTED_ALPHA = 0.3f;
-    private static final int DEFAULT_POINT_RADIUS = 5;
-
+    private static final int DEFAULT_POINT_RADIUS = 10;
+    private static final int DEFAULT_POINT_COLOR = 0xffffff;
 
     private int mLastIndex = DEFAULT_INDEX;
     private int mPointRadius = DEFAULT_POINT_RADIUS;
+    private int mPointSpace = DEFAULT_POINT_SPACE;
+    private int mPointColor = DEFAULT_POINT_COLOR;
 
     public PagePointView(Context context) {
         super(context);
@@ -54,6 +56,8 @@ public class PagePointView extends LinearLayout {
     private void initProperty(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.PagePointView);
         mPointRadius = typedArray.getDimensionPixelOffset(R.styleable.PagePointView_pointRadius,DEFAULT_POINT_RADIUS);
+        mPointSpace =  typedArray.getDimensionPixelOffset(R.styleable.PagePointView_pointSpace,DEFAULT_POINT_SPACE);
+        mPointColor = typedArray.getColor(R.styleable.PagePointView_pointColor,DEFAULT_POINT_COLOR);
     }
 
     private void setLayoutProperty() {
@@ -61,15 +65,16 @@ public class PagePointView extends LinearLayout {
     }
 
     private void initView() {
-        LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < DEFAULT_POINT_COUNT; i++) {
+            LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             if (i != 0) {
-                params.leftMargin = DEFAULT_POINT_SPACE;
+                params.leftMargin = mPointSpace;
             }
             PointView pointView = new PointView(getContext());
             if (i != DEFAULT_INDEX) {
                 pointView.setAlpha(UNSELECTED_ALPHA);
             }
+            pointView.setPointColor(mPointColor);
             pointView.setPointRadius(mPointRadius);
             addView(pointView, params);
         }
@@ -91,6 +96,25 @@ public class PagePointView extends LinearLayout {
         for(int i = 0; i < DEFAULT_POINT_COUNT; i++){
             PointView currentView = (PointView) getChildAt(i);
             currentView.setPointRadius(mPointRadius);
+        }
+    }
+
+    public void setPointSpace(int pointSpace){
+        mPointSpace = pointSpace;
+        for (int i = 0; i < DEFAULT_POINT_COUNT; i++){
+            PointView currentView = (PointView) getChildAt(i);
+            LinearLayout.LayoutParams params = (LayoutParams) currentView.getLayoutParams();
+            if (i != 0) {
+                params.leftMargin = mPointSpace;
+            }
+        }
+    }
+
+    public void setPointColor(int pointColor){
+        mPointColor = pointColor;
+        for(int i = 0; i < DEFAULT_POINT_COUNT; i++){
+            PointView currentView = (PointView) getChildAt(i);
+            currentView.setPointColor(mPointColor);
         }
     }
 }
