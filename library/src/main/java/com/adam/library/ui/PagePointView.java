@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.adam.library.R;
-import com.adam.library.util.DimenUtil;
 
 /**
  * Created by Adam on 2017/5/8.
@@ -89,7 +88,9 @@ public class PagePointView extends LinearLayout {
 
     public void setPointRadius(int radius) {
         mPointRadius = radius;
-        removeAllViews();
-        initView();
+        for(int i = 0; i < DEFAULT_POINT_COUNT; i++){
+            PointView currentView = (PointView) getChildAt(i);
+            currentView.setPointRadius(mPointRadius);
+        }
     }
 }
