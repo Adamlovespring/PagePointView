@@ -2,7 +2,7 @@
 A View to tell you which page you are now°£
 
 ## ScreenShot
-![’‚¿Ô–¥Õº∆¨√Ë ˆ](http://img.blog.csdn.net/20170515181225337?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzU3ODQxMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![image](https://github.com/Adamlovespring/PagePointView/blob/master/screenshot/GIF.gif)
 
 ## Usage
     //in xml
