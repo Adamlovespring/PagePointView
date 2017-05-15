@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 
 import com.adam.library.ui.PagePointView;
 
@@ -25,6 +27,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initViewPager();
+        mPagePointView = (PagePointView) findViewById(R.id.pagePointView);
+        mPagePointView.setUnSelectPointSize(0.5f);
+    }
+
+    private void initViewPager() {
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         LayoutInflater inflater = getLayoutInflater();
         view1 = inflater.inflate(R.layout.layout1, null);
@@ -37,7 +45,6 @@ public class MainActivity extends Activity {
         viewList.add(view3);
         mViewPager.setAdapter(new MyPageAdapter());
         mViewPager.setOnPageChangeListener(onPageChangeListener);
-        mPagePointView = (PagePointView) findViewById(R.id.pagePointView);
     }
 
     class MyPageAdapter extends PagerAdapter {

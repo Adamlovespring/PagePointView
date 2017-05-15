@@ -73,4 +73,9 @@ public class PointView extends View {
     public void setPointColor(int color) {
         mPointColor = color;
     }
+
+    public void setSize(float radius){
+        setScaleX(radius);
+        setScaleY(radius);
+    }
 }
