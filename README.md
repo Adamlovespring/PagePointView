@@ -11,21 +11,21 @@ compile 'com.adam.pagepointview:library:1.0.1'
 
 
 ```xml
-    //in xml
-    <com.adam.library.ui.PagePointView
-        android:id="@+id/pagePointView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+//in xml
+<com.adam.library.ui.PagePointView
+    android:id="@+id/pagePointView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 ```
 ```java
-        //of course you can create it in java code
-        PagePointView view  = new PagePointView(context);
-        
-        //if you use ViewPager,just add this code in onPageSelected.
-        @Override
-        public void onPageSelected(int position) {
-            mPagePointView.setItemSelect(position);
-        }
+//of course you can create it in java code
+PagePointView view  = new PagePointView(context);
+
+//if you use ViewPager,just add this code in onPageSelected.
+@Override
+public void onPageSelected(int position) {
+    mPagePointView.setItemSelect(position);
+}
 ```
         
 ## Properties
