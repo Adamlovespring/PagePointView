@@ -5,6 +5,11 @@ A View to tell you which page you are now¡£
 ![image](https://github.com/Adamlovespring/PagePointView/blob/master/screenshot/GIF.gif)
 
 ## Usage
+```java
+compile 'com.adam.pagepointview:library:1.0.1'
+```
+
+
 ```xml
     //in xml
     <com.adam.library.ui.PagePointView
