@@ -14,13 +14,13 @@ import com.adam.library.R;
 
 public class PagePointView extends LinearLayout {
 
-    private static final int DEFAULT_POINT_COUNT = 5;
-    private static final int DEFAULT_POINT_SPACE = 5;
+    private static final int DEFAULT_POINT_COUNT = 3;
+    private static final int DEFAULT_POINT_SPACE = 10;
     private static final int DEFAULT_INDEX = 0;
     private static final float SELECTED_ALPHA = 1f;
     private static final float UNSELECTED_ALPHA = 0.3f;
-    private static final int DEFAULT_POINT_RADIUS = 10;
-    private static final int DEFAULT_POINT_COLOR = 0xffffff;
+    private static final int DEFAULT_POINT_RADIUS = 12;
+    private static final int DEFAULT_POINT_COLOR = 0xff000000;
 
     private int mLastIndex = DEFAULT_INDEX;
     private int mPointRadius = DEFAULT_POINT_RADIUS;
@@ -85,9 +85,9 @@ public class PagePointView extends LinearLayout {
             return;
         }
         PointView currentView = (PointView) getChildAt(index);
-        currentView.setAlpha(UNSELECTED_ALPHA);
+        currentView.setAlpha(SELECTED_ALPHA);
         PointView lastView = (PointView) getChildAt(mLastIndex);
-        lastView.setAlpha(SELECTED_ALPHA);
+        lastView.setAlpha(UNSELECTED_ALPHA);
         mLastIndex = index;
     }
 
